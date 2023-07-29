@@ -25,11 +25,8 @@ server.listen(8080, () => {
   console.log("Server running on http://localhost:8080");
 });
 
-const MONGO_URL =
-  "mongodb+srv://greybluesea:12345qwe@cluster0.nlzzsti.mongodb.net/?retryWrites=true&w=majority";
-
 mongoose.Promise = Promise;
-mongoose.connect(MONGO_URL);
+mongoose.connect(process.env.MONGO_URL);
 mongoose.connection.on("error", (error: Error) => console.log(error));
 
 app.use("/", router());
